@@ -20,6 +20,13 @@ to your `composer.json` file:
 }
 ```
 
+OR require it: 
+
+```
+composer require league/omnipay:^3 dilab/omnipay-okdollar:~1.0
+```
+
+
 And run composer to update your dependencies:
 
     $ curl -s http://getcomposer.org/installer | php
