@@ -1,0 +1,31 @@
+{
+    "name": "dilab/omnipay-okaydollar",
+    "type": "library",
+    "description": "OkDollar driver for the Omnipay payment processing library",
+    "keywords": [
+        "gateway",
+        "merchant",
+        "omnipay",
+        "pay",
+        "payment",
+        "okdollar"
+    ],
+    "homepage": "https://github.com/dilab/omnipay-okdollar",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Xu Ding",
+            "email": "thedilab@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "Omnipay\\OkDollar\\" : "src/" }
+    },
+    "require": {
+        "omnipay/common": "^3"
+    },
+    "require-dev": {
+        "omnipay/tests": "^3"
+    },
+    "prefer-stable": true
+}
