@@ -21,11 +21,9 @@
     "autoload": {
         "psr-4": { "Omnipay\\OkDollar\\" : "src/" }
     },
+    "prefer-stable": true,
     "require": {
-        "omnipay/common": "^3"
-    },
-    "require-dev": {
-        "omnipay/tests": "^3"
-    },
-    "prefer-stable": true
+        "omnipay/common": "~2.0",
+        "omnipay/tests": "~2.0"
+    }
 }
