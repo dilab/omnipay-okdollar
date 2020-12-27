@@ -6,6 +6,8 @@ use Omnipay\Common\Message\AbstractResponse;
 
 class PurchaseResponse extends AbstractResponse
 {
+    const POST_URL  = 'http://69.160.4.151:8331/PaymentGatewayWrapper.aspx';
+
     public function isSuccessful()
     {
         return false;
@@ -36,5 +38,10 @@ class PurchaseResponse extends AbstractResponse
         return 'POST';
     }
 
+
+    public function getRedirectUrl()
+    {
+        return self::POST_URL;
+    }
 
 }

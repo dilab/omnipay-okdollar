@@ -33,6 +33,7 @@ class PurchaseResponseTest extends TestCase
         $this->assertTrue($this->response->isPending());
         $this->assertTrue($this->response->isTransparentRedirect());
         $this->assertEquals('POST',$this->response->getRedirectMethod());
+        $this->assertEquals(PurchaseResponse::POST_URL,$this->response->getRedirectUrl());
     }
 
 
