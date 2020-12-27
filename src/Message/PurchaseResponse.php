@@ -31,5 +31,10 @@ class PurchaseResponse extends AbstractResponse
         return $this->getData();
     }
 
+    public function getRedirectMethod()
+    {
+        return 'POST';
+    }
+
 
 }
