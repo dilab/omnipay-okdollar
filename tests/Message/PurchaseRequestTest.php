@@ -70,7 +70,7 @@ class PurchaseRequestTest extends TestCase
         $requestToJson = $result['requestToJson'];
 
         $encryptedText = explode(',', $requestToJson)[0];
-
+        
         $decrypted = openssl_decrypt($encryptedText, $cipher, $key, 0, $this->request->getIv());
 
         $this->assertEquals($plainText, $decrypted);
