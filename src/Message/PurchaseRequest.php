@@ -74,8 +74,8 @@ class PurchaseRequest extends \Omnipay\Common\Message\AbstractRequest
     {
         $plainText = json_encode($getDataPlain);
         $cipher = 'aes-128-cbc';
-        $ivLen = openssl_cipher_iv_length($cipher);
-        $iv = openssl_random_pseudo_bytes($ivLen);
+        $ivByte = openssl_random_pseudo_bytes(8);
+        $iv = bin2hex($ivByte);
         $this->iv = $iv;
         return openssl_encrypt($plainText, $cipher, $this->getApiKey(), $options = 0, $iv);
     }
