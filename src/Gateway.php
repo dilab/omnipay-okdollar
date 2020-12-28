@@ -18,7 +18,18 @@ class Gateway extends AbstractGateway
             'merchantNumber' => '',
             'merchantName' => '',
             'apiKey' => '',
+            'postUrl' => '',
         ];
+    }
+
+    public function getPostUrl()
+    {
+        return $this->getParameter('postUrl');
+    }
+
+    public function setPostUrl($postUrl)
+    {
+        return $this->setParameter('postUrl', $postUrl);
     }
 
     public function getMerchantNumber()

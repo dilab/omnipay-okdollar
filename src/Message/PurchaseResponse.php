@@ -38,10 +38,9 @@ class PurchaseResponse extends AbstractResponse
         return 'POST';
     }
 
-
     public function getRedirectUrl()
     {
-        return self::POST_URL;
+        return $this->request->getPostUrl();
     }
 
 }

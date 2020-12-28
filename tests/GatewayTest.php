@@ -27,9 +27,10 @@ class GatewayTest extends TestCase
             'merchantNumber' => ('00959971813997'),
             'merchantName' => ('CGM'),
             'apiKey' => $key = ('1234566789'),
+            'postUrl' => 'http://www.google.com',
             'amount' => (4.06),
             'currency' => ('MMK'),
-            'transactionId' => ('CGMEComAx20161331924438')
+            'transactionId' => ('CGMEComAx20161331924438'),
         ];
     }
 

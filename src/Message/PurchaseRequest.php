@@ -12,6 +12,16 @@ class PurchaseRequest extends \Omnipay\Common\Message\AbstractRequest
         return new PurchaseResponse($this, $data);
     }
 
+    public function getPostUrl()
+    {
+        return $this->getParameter('postUrl');
+    }
+
+    public function setPostUrl($postUrl)
+    {
+        return $this->setParameter('postUrl', $postUrl);
+    }
+
     public function getMerchantNumber()
     {
         return $this->getParameter('merchantNumber');
