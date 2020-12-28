@@ -61,7 +61,7 @@ class PurchaseRequest extends \Omnipay\Common\Message\AbstractRequest
     {
         return [
             'requestToJson' => $this->encryptedText($this->getDataPlain())
-                . ',' . bin2hex($this->getIv())
+                . ',' . $this->getIv()
                 . ',' . $this->getMerchantNumber()
         ];
     }
