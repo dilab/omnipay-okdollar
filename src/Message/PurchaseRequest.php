@@ -71,8 +71,8 @@ class PurchaseRequest extends \Omnipay\Common\Message\AbstractRequest
     {
         return [
             'requestToJson' => $this->encryptedText($this->getDataPlain())
-                . ',' . $this->getIv()
-                . ',' . $this->getMerchantNumber()
+                .','.$this->getIv()
+                .','.$this->getMerchantNumber()
         ];
     }
 
@@ -82,8 +82,8 @@ class PurchaseRequest extends \Omnipay\Common\Message\AbstractRequest
 
         return [
             'Destination' => $this->getMerchantNumber(),
-            'Amount' => floatval($amount),
-            'Source' => $this->getCard()->getPhone(),
+            'Amount' => $this->str(floatval($amount)),
+            'Source' => empty($this->getCard()->getPhone()) ? '' : $this->getCard()->getPhone(),
             'ApiKey' => $this->getApiKey(),
             'MerchantName' => $this->getMerchantName(),
             'RefNumber' => $this->getTransactionId(),
@@ -98,6 +98,11 @@ class PurchaseRequest extends \Omnipay\Common\Message\AbstractRequest
         $iv = bin2hex($ivByte);
         $this->iv = $iv;
         return openssl_encrypt($plainText, $cipher, $this->getEncryptionKey(), $options = 0, $iv);
+    }
+
+    private function str($floatval)
+    {
+        return strval($floatval);
     }
 
 }

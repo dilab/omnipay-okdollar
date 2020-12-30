@@ -64,7 +64,7 @@ class PurchaseRequestTest extends TestCase
 
         $result = $this->request->getData();
 
-        $plainText = '{"Destination":"00959971813997","Amount":4.06,"Source":"00959787190850","ApiKey":"1234566789","MerchantName":"CGM","RefNumber":"CGMEComAx20161331924438"}';
+        $plainText = '{"Destination":"00959971813997","Amount":"4.06","Source":"00959787190850","ApiKey":"1234566789","MerchantName":"CGM","RefNumber":"CGMEComAx20161331924438"}';
 
         $cipher = 'aes-128-cbc';
 
