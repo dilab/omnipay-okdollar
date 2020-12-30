@@ -52,6 +52,16 @@ class PurchaseRequest extends \Omnipay\Common\Message\AbstractRequest
         return $this->setParameter('apiKey', $apiKey);
     }
 
+    public function getEncryptionKey()
+    {
+        return $this->getParameter('encryptionKey');
+    }
+
+    public function setEncryptionKey($encryptionKey)
+    {
+        return $this->setParameter('encryptionKey', $encryptionKey);
+    }
+
     public function getIv()
     {
         return $this->iv;
@@ -87,7 +97,7 @@ class PurchaseRequest extends \Omnipay\Common\Message\AbstractRequest
         $ivByte = openssl_random_pseudo_bytes(8);
         $iv = bin2hex($ivByte);
         $this->iv = $iv;
-        return openssl_encrypt($plainText, $cipher, $this->getApiKey(), $options = 0, $iv);
+        return openssl_encrypt($plainText, $cipher, $this->getEncryptionKey(), $options = 0, $iv);
     }
 
 }

@@ -18,6 +18,7 @@ class Gateway extends AbstractGateway
             'merchantNumber' => '',
             'merchantName' => '',
             'apiKey' => '',
+            'encryptionKey' => '',
             'postUrl' => '',
         ];
     }
@@ -60,6 +61,16 @@ class Gateway extends AbstractGateway
     public function setApiKey($apiKey)
     {
         return $this->setParameter('apiKey', $apiKey);
+    }
+
+    public function getEncryptionKey()
+    {
+        return $this->getParameter('encryptionKey');
+    }
+
+    public function setEncryptionKey($encryptionKey)
+    {
+        return $this->setParameter('encryptionKey', $encryptionKey);
     }
 
     public function purchase(array $options = [])

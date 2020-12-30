@@ -55,7 +55,8 @@ class PurchaseRequestTest extends TestCase
             ],
             'merchantNumber' => ('00959971813997'),
             'merchantName' => ('CGM'),
-            'apiKey' => $key = ('1234566789'),
+            'apiKey' =>  ('1234566789'),
+            'encryptionKey' => $encryptionKey = ('1234566789'),
             'amount' => (4.06),
             'currency' => ('MMK'),
             'transactionId' => ('CGMEComAx20161331924438')
@@ -70,8 +71,8 @@ class PurchaseRequestTest extends TestCase
         $requestToJson = $result['requestToJson'];
 
         $encryptedText = explode(',', $requestToJson)[0];
-        
-        $decrypted = openssl_decrypt($encryptedText, $cipher, $key, 0, $this->request->getIv());
+
+        $decrypted = openssl_decrypt($encryptedText, $cipher, $encryptionKey, 0, $this->request->getIv());
 
         $this->assertEquals($plainText, $decrypted);
     }
