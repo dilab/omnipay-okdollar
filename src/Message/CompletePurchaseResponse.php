@@ -10,7 +10,7 @@ class CompletePurchaseResponse extends \Omnipay\Common\Message\AbstractResponse
             return false;
         }
 
-        return $this->data['ResponseCode'] == 0 && $this->data['isCredentialMatch'];
+        return $this->data['ResponseCode'] == 0;
     }
 
     public function getTransactionId()
