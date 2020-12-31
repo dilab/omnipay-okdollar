@@ -20,7 +20,6 @@ class CompletePurchaseResponseTest extends TestCase
     public function successResponse()
     {
         return [
-            'isCredentialMatch' => true,
             'ResponseCode' => '0',
             'Destination' => '00959971813997',
             'Source' => '00959787190850',
@@ -39,7 +38,6 @@ class CompletePurchaseResponseTest extends TestCase
     public function failedResponse()
     {
         return [
-            'isCredentialMatch' => false,
             'ResponseCode' => '300',
             'Destination' => 'your Merchant account number ',
             'Source' => 'Customer account number ',
@@ -76,11 +74,6 @@ class CompletePurchaseResponseTest extends TestCase
         $request = $this->getMockRequest();
 
         $data = $this->failedResponse();
-        $this->response = new CompletePurchaseResponse($request, $data);
-        $this->assertFalse($this->response->isSuccessful());
-
-        $data = $this->successResponse();
-        $data['isCredentialMatch'] = false;
         $this->response = new CompletePurchaseResponse($request, $data);
         $this->assertFalse($this->response->isSuccessful());
     }

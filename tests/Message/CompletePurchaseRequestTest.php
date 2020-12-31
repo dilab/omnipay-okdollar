@@ -27,32 +27,28 @@ class CompletePurchaseRequestTest extends TestCase
             'card' => [
                 'phone' => ('00959787190850'),
             ],
-            'merchantNumber' => ('00959971813997'),
+            'merchantNumber' => ('00959891006322'),
             'merchantName' => ('CGM'),
-            'apiKey' => $key = ('1234566789'),
+            'apiKey' => '1234566789',
+            'encryptionKey' => 'BFC5B34FD9803540',
             'amount' => (4.06),
             'currency' => ('MMK'),
-            'transactionId' => ('CGMEComAx20161331924438')
+            'transactionId' => ('sp-20201231-889743')
         ]);
 
         $response = [
-            'ResponseCode' => '0',
-            'Destination' => '00959971813997',
-            'Source' => '00959787190850',
-            'Amount' => '4.06',
-            'TransactionId' => '62795067',
-            'TransactionTime' => '13-Jul-2016 19:33:59',
-            'AgentName' => 'MR,PERSONAL',
-            'Kickvalue' => '',
-            'Loyaltypoints' => '0',
-            'Description' => 'Transaction Successful',
-            'MerRefNo' => 'CGMEComAx20161331931653',
-            'CustomerNumber' => '',
+            'PayMentDet' => 'IIPcDkWKqj+30cUeflF+/TVEsAXwxx1Zoe8n81Yjni+WaFsgdBBoBsfFkPs+iNyCAIBVxjBaQhMEq+F6npdWl/Dip'.
+                'DTIbW7hsiLy3bHdzfYhzOId12jNXcd6K7O9wnSm1nZnR6lzNzzCbIGHcyKS/NRpYPn/ssRK8ZaYveg9RAvVHq4DB5QbsduHPqS+YX3'.
+                'RA0NjED/eaXTh/H6gWpk9ur8/hEAJa23BVg9UM/CGojPLhOv59zWIEhMpEbn0qB5Z6XxmWyenB0K3oC1ctZwxWTSSBeQmSakeE/sWR'.
+                '9JtTpIv1ruPpbgbi1BKW4TXZU1qXU3Ooghhb4SWB+oeqrK3GqUvGrgIAVNX1qJXEdKMC/IKzEr3WIDlip6q0BHQCY0qivnuHWb07V5'.
+                'EEEn+k/gc5ioDiTxdamo2lwb0wkCtbLgBcyK8B0UiGB3ZyD3cuYXjHTBuw4YtJXJoll1hlNpF3/dEApqO1wFdJAOMIBqe5B/932rKk8'.
+                '8UEcv0Nr5X8Xd8I0n28v2R0BgW/PtMyY0vHrmhtmPDN4cv6kp+IE2q2vKkjluj2g2bwkLiSRqoZHG/zM7Zhmsh+ZMkWHS0qO1GEg=='.
+                ',aaa70107bf3d030d,00959891006322'
         ];
 
         $this->getHttpRequest()->request->replace($response);
 
-        $this->assertArraySubset($response, $this->request->getData());
+        $this->assertEquals('00959891006322', $this->request->getData()['Destination']);
     }
 
     public function test_it_can_send_data()
@@ -72,41 +68,4 @@ class CompletePurchaseRequestTest extends TestCase
         $this->assertInstanceOf(CompletePurchaseResponse::class, $this->request->sendData([]));
     }
 
-    public function test_it_can_check_credential()
-    {
-        $this->request->initialize([
-            'card' => [
-                'phone' => ('00959787190850'),
-            ],
-            'merchantNumber' => ('00959971813997'),
-            'merchantName' => ('CGM'),
-            'apiKey' => $key = ('1234566789'),
-            'amount' => (4.06),
-            'currency' => ('MMK'),
-            'transactionId' => ('CGMEComAx20161331924438')
-        ]);
-
-        $response = [
-            'ResponseCode' => '0',
-            'Destination' => '00959971813997',
-            'Source' => '00959787190850',
-            'Amount' => '4.06',
-            'TransactionId' => '62795067',
-            'TransactionTime' => '13-Jul-2016 19:33:59',
-            'AgentName' => 'MR,PERSONAL',
-            'Kickvalue' => '',
-            'Loyaltypoints' => '0',
-            'Description' => 'Transaction Successful',
-            'MerRefNo' => 'CGMEComAx20161331931653',
-            'CustomerNumber' => '',
-        ];
-
-        $this->getHttpRequest()->request->replace($response);
-        $this->assertTrue($this->request->getData()['isCredentialMatch']);
-
-
-        $response['Destination'] = '1234567';
-        $this->getHttpRequest()->request->replace($response);
-        $this->assertFalse($this->request->getData()['isCredentialMatch']);
-    }
 }

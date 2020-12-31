@@ -6,6 +6,10 @@ class CompletePurchaseResponse extends \Omnipay\Common\Message\AbstractResponse
 {
     public function isSuccessful()
     {
+        if (null == $this->data) {
+            return false;
+        }
+
         return $this->data['ResponseCode'] == 0 && $this->data['isCredentialMatch'];
     }
 
